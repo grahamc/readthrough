@@ -8,8 +8,10 @@ sudo apt-get -y install nginx
 
 function replace
 {
-  sudo cp "$1" "$1.bak"
-  sudo cp "$2" "$1"
+  if [ -f "$2" ]; then
+    sudo cp "$2" "$2.bak"
+  fi
+  sudo cp "$1" "$2"
 }
 
 replace /vagrant/nginx.conf /etc/nginx/nginx.conf
