@@ -15,7 +15,7 @@ function replace
 }
 
 replace /vagrant/nginx.conf /etc/nginx/nginx.conf
-replace /vagrant/mirror.conf /etc/nginx/sites-enabled/gems.conf
+replace /vagrant/mirror.conf /etc/nginx/conf.d/gems.conf
 
 sudo mkdir -p /var/www/nginx_temp
 sudo chown www-data:www-data /var/www/nginx_temp
