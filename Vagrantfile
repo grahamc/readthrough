@@ -13,4 +13,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "hashicorp/precise64"
   config.vm.network "forwarded_port", guest: 80, host: 9000
   config.vm.provision "shell", :path => "boot.sh"
+  config.vm.synced_folder "cache/", "/var/www/nginx-cache",
+    owner: "www-data", group: "www-data"
 end
