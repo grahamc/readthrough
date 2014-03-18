@@ -48,6 +48,7 @@ and place this in `~/vagrant.d/gemcache`:
 set -e
 set -x
 cd /home/vagrant
+touch Gemfile
 export GEM_MIRROR=`echo "$SSH_CLIENT" | cut -d' ' -f1`
 
 function test_up()
@@ -60,12 +61,12 @@ function test_up()
   wget -t 1 -T 1 -S --spider http://$GEM_MIRROR:9000 2> /dev/null;
 }
 
-hash bundle 2> /dev/null || exit
+hash bundle 2> /dev/null || exit 0
 
 bundle config --delete mirror.http://rubygems.org
 bundle config --delete mirror.https://rubygems.org
 
-test_up || exit
+test_up || exit 0
 
 bundle config mirror.http://rubygems.org "http://$GEM_MIRROR:9000"
 bundle config mirror.https://rubygems.org "http://$GEM_MIRROR:9000"
