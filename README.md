@@ -58,7 +58,7 @@ function test_up()
   # -S -> Server response (headers)
   # --spider -> spider?
   # Somehow these arguments come together to execute a HEAD request.
-  wget -t 1 -T 1 -S --spider http://$GEM_MIRROR:9000 2> /dev/null;
+  wget -t 5 -T 1 -S --spider http://$GEM_MIRROR:9000 2> /dev/null;
 }
 
 hash bundle 2> /dev/null || exit 0
